@@ -1,6 +1,7 @@
 import React from "react";
 
 function PizzaForm({pizza, onChangeFormInput}) {
+  if(!pizza) return null
   function handleInputChange(e) {
     onChangeFormInput(e.target.name, e.target.value)
   }
