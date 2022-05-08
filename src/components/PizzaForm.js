@@ -1,6 +1,6 @@
 import React from "react";
 
-function PizzaForm({pizza, onChangeFormInput}) {
+function PizzaForm({pizza, onChangeFormInput, editPizzaData}) {
   if(!pizza) return null
   function handleInputChange(e) {
     onChangeFormInput(e.target.name, e.target.value)
@@ -10,6 +10,15 @@ function PizzaForm({pizza, onChangeFormInput}) {
   }
   function handleFormSubmit(e) {
     e.preventDefault()
+    fetch(`http://localhost:3001/pizzas/${pizza.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(pizza)
+    })
+    .then((res) => res.json())
+    .then(editPizzaData)
   }
   return (
     <form onSubmit={handleFormSubmit}>
