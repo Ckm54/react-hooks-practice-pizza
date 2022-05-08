@@ -6,7 +6,7 @@ function PizzaForm({pizza, onChangeFormInput}) {
     onChangeFormInput(e.target.name, e.target.value)
   }
   function handleRadioChange(e) {
-    console.log(e.target.name, " : ", e.target.checked)
+    onChangeFormInput(e.target.name, e.target.value === "Vegetarian")
   }
   function handleFormSubmit(e) {
     e.preventDefault()
@@ -37,6 +37,7 @@ function PizzaForm({pizza, onChangeFormInput}) {
               className="form-check-input"
               type="radio"
               name="vegetarian"
+              value="Vegetarian"
               checked={pizza.vegetarian}
               onChange={handleRadioChange}
             />
