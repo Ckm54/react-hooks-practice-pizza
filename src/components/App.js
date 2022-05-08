@@ -23,7 +23,7 @@ function App() {
   function handlePizzaDataEdit(editedPizza) {
     const updatedList = pizzaData.map((pizza) => pizza.id === editedPizza.id ? editedPizza : pizza)
     setPizzaData(updatedList)
-    setPizzaSelected(null)
+    setPizzaSelected(updatedList)
   }
 
   return (
